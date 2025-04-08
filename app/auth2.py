@@ -56,6 +56,6 @@ def get_current_user(token: str = Depends(oath2_scheme),
   
     token = verify_access_token(token, credentials_exception)
 
-    user = db.query(models.User).filter(models.User.id == token.id).first()
+    user = db.query(models.User).filter(models.User.id == int(token.id)).first()
 
     return user
